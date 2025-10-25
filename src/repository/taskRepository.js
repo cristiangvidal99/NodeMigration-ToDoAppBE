@@ -5,6 +5,7 @@ const getAll = async () => {
         const { data, error } = await supabase
             .from('TASK')
             .select('*');
+
         return data;
     } catch (error) {
         console.error('Error al obtener usuarios:', error);
@@ -12,6 +13,20 @@ const getAll = async () => {
     }
 }
 
+const getTaskById = async (id) => {
+    try {
+        const { data, error } = await supabase
+            .from('TASK')
+            .select('*')
+            .eq('id', id);
+        return data;
+    } catch (error) {
+        console.error('Error al obtener el usuario con el id: ' + id, error);
+        throw error;
+    }
+}
+
 module.exports = {
-    getAll
+    getAll,
+    getTaskById
 }
