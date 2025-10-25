@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const usuariosCtrl = require('../controllers/userController');
+const taskController = require('../controllers/taskController');
 
 /**
  * @swagger
- * /api/usuarios:
+ * /api/task:
  *   get:
- *     summary: Obtener todos los usuarios
+ *     summary: Obtener todas las tareas
  *     tags: [Usuarios]
  *     responses:
  *       200:
  *         description: Lista de usuarios obtenida correctamente
  */
-router.get('/usuarios', usuariosCtrl.getAll);
+router.get('/task', taskController.getAll);
 
 module.exports = router;
