@@ -40,8 +40,36 @@ const createTask = async (body) => {
     }
 };
 
+const editTaskById = async (body) => {
+    try {
+        const { data, error } = await supabase
+            .from('TASK')
+            .update(body)
+            .eq('id', body.id)
+        return data;
+    } catch (error) {
+        console.error('Error al editar la tarea con el id: ' + id, error);
+        throw error;
+    }
+}
+
+const deleteTaskById = async (id) => {
+    try {
+        const { data, error } = await supabase
+            .from('TASK')
+            .delete()
+            .eq('id', id)
+            .select();
+        return data;
+    } catch (error) {
+        console.error('Error al eliminar la tarea con el id: ' + id, error);
+        throw error;
+    }
+}
 module.exports = {
     getAll,
     getTaskById,
-    createTask
+    createTask,
+    editTaskById,
+    deleteTaskById
 }

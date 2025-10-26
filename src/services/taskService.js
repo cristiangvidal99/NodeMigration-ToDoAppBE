@@ -12,8 +12,18 @@ const createTask = async (body) => {
     return await taskRepository.createTask(body);
 }
 
+const editTaskById = async (id) => {
+    return await taskRepository.editTaskById(id);
+}
+const deleteTaskById = async (id) => {
+    return await taskRepository.deleteTaskById(id);
+}
+
+
 module.exports = {
     getAll,
     getTaskById,
-    createTask
+    createTask,
+    editTaskById,
+    deleteTaskById
 }

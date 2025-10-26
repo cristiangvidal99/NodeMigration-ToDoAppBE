@@ -20,9 +20,26 @@ const createTask = async (req, res) => {
 
     res.status(200).json(createTask);
 }
+const editTaskById = async (req, res) => {
+    const task = await taskService.editTaskById(req.body);
 
+    if (!task) {
+        res.status(500);
+    }
+    res.status(200).json(task)
+}
+const deleteTaskById = async (req, res) => {
+    const task = await taskService.deleteTaskById(req.params.id);
+
+    if (!task) {
+        res.status(500);
+    }
+    res.status(200).json(task)
+}
 module.exports = {
     getAll,
     getTaskById,
-    createTask
+    createTask,
+    editTaskById,
+    deleteTaskById
 }
