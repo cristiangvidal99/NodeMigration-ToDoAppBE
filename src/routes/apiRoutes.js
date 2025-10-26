@@ -47,7 +47,40 @@ const taskController = require('../controllers/taskController');
  *       404:
  *         description: Tarea no encontrada
  */
+/**
+ * @swagger
+ * /api/createTask:
+ *   post:
+ *     summary: Crear una nueva tarea
+ *     tags: [Usuarios]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 example: "Comprar leche"
+ *               description:
+ *                 type: string
+ *                 example: "Ir al supermercado"
+ *               date:
+ *                 type: string
+ *                 example: "2025-10-25"
+ *               priority:
+ *                 type: string
+ *                 example: "Alta"
+ *     responses:
+ *       201:
+ *         description: Tarea creada correctamente
+ *       400:
+ *         description: Error al crear la tarea
+ */
+
 router.get('/task', taskController.getAll);
 router.get('/task/:id', taskController.getTaskById);
+router.post('/createTask', taskController.createTask);
 
 module.exports = router;

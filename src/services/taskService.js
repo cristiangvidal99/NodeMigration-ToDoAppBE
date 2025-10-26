@@ -8,7 +8,12 @@ const getTaskById = async (id) => {
     return await taskRepository.getTaskById(id);
 }
 
+const createTask = async (body) => {
+    return await taskRepository.createTask(body);
+}
+
 module.exports = {
     getAll,
-    getTaskById
+    getTaskById,
+    createTask
 }

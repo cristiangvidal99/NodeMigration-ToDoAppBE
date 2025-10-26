@@ -5,7 +5,6 @@ const getAll = async () => {
         const { data, error } = await supabase
             .from('TASK')
             .select('*');
-
         return data;
     } catch (error) {
         console.error('Error al obtener usuarios:', error);
@@ -26,7 +25,23 @@ const getTaskById = async (id) => {
     }
 }
 
+const createTask = async (body) => {
+    const { title, description, date, priority } = body;
+
+    try {
+        const { data, error } = await supabase
+            .from('TASK')
+            .insert([{ title, description, date, priority }])
+            .select();
+        return data;
+    } catch (error) {
+        console.error('Error en createTask:', error);
+        throw error;
+    }
+};
+
 module.exports = {
     getAll,
-    getTaskById
+    getTaskById,
+    createTask
 }
