@@ -46,6 +46,7 @@ const editTaskById = async (body) => {
             .from('TASK')
             .update(body)
             .eq('id', body.id)
+            .select();
         return data;
     } catch (error) {
         console.error('Error al editar la tarea con el id: ' + id, error);

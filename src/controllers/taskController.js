@@ -34,7 +34,7 @@ const deleteTaskById = async (req, res) => {
     if (!task) {
         res.status(500);
     }
-    res.status(200).json(task)
+    res.status(200).json("OK")
 }
 module.exports = {
     getAll,
